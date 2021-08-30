@@ -1,3 +1,8 @@
+<?php 
+
+    define('__CONFIG__', true);
+    require_once "inc/config.php" 
+?>
 <!DOCTYPE html>
 <html lang="en">
     <head>
@@ -13,35 +18,16 @@
     </head>
     <body>
         <div class="uk-section uk-container">
-            <div class="uk-grid uk-child-width-1-3@s uk-child-width-1-1" uk-grid> 
-                <form class="uk-form-stacked js-login">
-                    <fieldset class="uk-fieldset">
-
-                        <legend class="uk-legend">Email</legend>
-
-                        <div class="uk-margin">
-                            <input class="uk-input" type="email" required="required" placeholder="email@email.com">
-                        </div>
-
-                        <legend class="uk-legend">Password</legend>
-
-                        <div class="uk-margin">
-                            <input class="uk-input" type="password" required="required" placeholder="Your Password">
-                        </div>
-
-                        <div class="uk-margin">
-                            <button class="uk-button uk-button-default" type="submit">Login</button>
-                        </div>
-                    </fieldset>
-                </form>
-            </div>
+            <?php 
+                echo "Hello world. Today is: ";
+                echo date("Y m d");
+            ?>
+            <p>
+                <a href="/LoginRegistration/login.php">Login</a>
+                <a href="/LoginRegistration/register.php">Register</a>
+            </p>
         </div>
 
-        <!-- jQuery -->
-        <script src="/LoginRegistration/packages/jquery-3.6.0.min.js"> </script>
-
-        <!-- UIkit JS -->
-        <script src="/LoginRegistration/packages/uikit.min.js"> </script>
-        <script src="/LoginRegistration/packages/uikit-icons.min.js"> </script>
+        <?php require_once "inc/footer.php"; ?>
     </body>
 </html>
