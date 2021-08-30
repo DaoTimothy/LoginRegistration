@@ -4,3 +4,5 @@
 <!-- UIkit JS -->
 <script src="/LoginRegistration/packages/uikit.min.js"> </script>
 <script src="/LoginRegistration/packages/uikit-icons.min.js"> </script>
+
+<script src="/LoginRegistration/assets/js/main.js"> </script>
