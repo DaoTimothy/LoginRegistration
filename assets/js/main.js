@@ -35,7 +35,9 @@ $(document)
         if(data.redirect !== undefined) {
             window.location = data.redirect;
         } else if (data.error !== undefined) {
-            _error.text(data.error).show();
+            _error
+                .text(data.error)
+                .show();
         }
     })
     .fail(function ajaxFailed(e) {
@@ -84,11 +86,13 @@ $(document)
         if(data.redirect !== undefined) {
             window.location = data.redirect;
         } else if (data.error !== undefined) {
-            _error.text(data.error).show();
+            _error
+                .html(data.error)
+                .show();
         }
     })
     .fail(function ajaxFailed(e) {
-
+        console.log(e);
     })
     .always(function ajaxAlwaysDoThis(data){
         console.log('Always');
