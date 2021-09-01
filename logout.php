@@ -1,6 +1,4 @@
 <?php
-    $past = time() - 3600;
-
     session_start();
     session_destroy();
     session_write_close();

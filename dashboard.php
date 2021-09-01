@@ -3,7 +3,10 @@
     define('__CONFIG__', true);
     require_once "inc/config.php";
 
-    ForceLogin();
+    Page::ForceLogin();
+
+    $User = new User($_SESSION['user_id']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -20,7 +23,9 @@
     </head>
     <body>
         <div class="uk-section uk-container">
-            Dashboard, you are signed in as user: <?php echo$_SESSION['user_id']; ?>
+            <h2>Dashboard</h2>
+            <p>Hello <?php echo $User->email; ?>, you registered at <?php echo $User->reg_time; ?></p>
+            <p><a href="/LoginRegistration/logout.php">Logout</a></p>
         </div>
 
         <?php require_once "inc/footer.php"; ?>
