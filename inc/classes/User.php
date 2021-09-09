@@ -44,5 +44,20 @@
             $user_found = (boolean) $findUser->rowCount();
             return $user_found;
         }
+
+        public static function FindReq($email, $return_assoc = false) {
+            $con = DB::getConnection();
+            //Make sure the friend request does not exist
+            $email = (string) Filter::String( $email );
+            $findUser = $con->prepare("SELECT user2 FROM friends WHERE user2 = LOWER(:email) LIMIT 1");
+            $findUser->bindParam(':email', $email, PDO::PARAM_STR);
+            $findUser->execute();
+
+            if ($return_assoc) {
+                return $findUser->fetch(PDO::FETCH_ASSOC);
+            }
+            $user_found = (boolean) $findUser->rowCount();
+            return $user_found;
+        }
     }
 ?>

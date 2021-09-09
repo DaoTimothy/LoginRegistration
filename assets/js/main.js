@@ -100,3 +100,35 @@ $(document)
 
     return false;
 })
+
+.on("submit", "form.js-friendreq", function(event) {
+    event.preventDefault();
+
+    var _form = $(this);
+    var _error = $(".js-error", _form);
+    var data = {
+        email: $("input[type='email']", _form).val()
+    };
+
+    //Starting ajax process
+    _error.hide();
+
+    $.ajax({
+        type: "POST",
+        url: '/LoginRegistration/ajax/friendreq.php',
+        data: data,
+        dataType: 'json',
+        async: true,
+    })
+    .done(function ajaxDone(data) {
+    
+    })
+    .fail(function ajaxFailed(e) {
+
+    })
+    .always(function ajaxAlwaysDoThis(data){
+        console.log('Always');
+    })
+
+    return false;
+})
