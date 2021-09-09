@@ -14,7 +14,7 @@
         public function __construct(int $user_id) {
             $this->con = DB::getConnection();
 
-            $user_id = Filter::Int( user_id );
+            $user_id = Filter::Int( $user_id );
             
             $user = $this->con->prepare("SELECT user_id, email, reg_time FROM users WHERE user_id = :user_id LIMIT 1");
             $user->bindParam(':user_id', $user_id, PDO::PARAM_INT);
@@ -28,9 +28,6 @@
             } else {
                 header("Location: /LoginRegistration/logout.php"); exit;
             }
-            $user = self::
-
-            $this->$con;
         }
 
         public static function Find($email, $return_assoc = false) {

@@ -4,7 +4,7 @@
     require_once "inc/config.php";
 
     Page::ForceLogin();
-
+    
     $User = new User($_SESSION['user_id']);
 
 ?>
