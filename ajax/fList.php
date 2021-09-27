@@ -10,19 +10,16 @@
 
         $email = Filter::String($_POST['email']);
 
-        $user_found = User::Find($email);
+        $friend_found = User::friendList($email);
 
-        if($user_found) {
-            //user exists
-            $findUser = $con->prepare("SELECT user2 FROM friends WHERE user2 = LOWER(:email) LIMIT 1");
-            $findUser->bindParam(':email', $email, PDO::PARAM_STR);
-            $findUser->execute();
-            
-
+        if ($friend_found) {
+            //show friends
+            $return['friends_list'] = $friend_found
         } else {
-            //user does not exist
-
+            //say you have no friends
+            $return['error'] = "You have no friends";
         }
+
 
         echo json_encode($return, JSON_PRETTY_PRINT); exit;
     } else {

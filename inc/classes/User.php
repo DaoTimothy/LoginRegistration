@@ -45,6 +45,19 @@
             return $user_found;
         }
 
+        public static function friendList($email) {
+            $con = DB::getConnection();
+
+            $email = (string) Filter::String( $email );
+            $friends = [];
+
+            $findFriend = $con->prepare("SELECT user1, user2, accepted FROM friends WHERE user1 = LOWER(:email) OR user2 = LOWER(:email) AND accepted=1");
+            $findFriend->bindPAram(':email', $email, PDO::PARAM_STR);
+            $findFriend->execute();
+
+            return $findFriend->fetchAll(PDO::FETCH_DEFAULT);
+        }
+
         public static function FindReq($email, $return_assoc = false) {
             $con = DB::getConnection();
             //Make sure the friend request does not exist
